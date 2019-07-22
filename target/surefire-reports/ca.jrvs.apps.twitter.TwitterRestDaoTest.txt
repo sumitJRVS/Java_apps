@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: ca.jrvs.apps.twitter.TwitterRestDaoTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 1.818 s <<< FAILURE! - in ca.jrvs.apps.twitter.TwitterRestDaoTest
+create(ca.jrvs.apps.twitter.TwitterRestDaoTest)  Time elapsed: 1.424 s  <<< ERROR!
+java.lang.RuntimeException: 
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "errors" (class ca.jrvs.apps.twitter.dto.Tweet), not marked as ignorable (10 known properties: "entities", "favorited", "created_at", "id", "favorite_count", "id_str", "retweet_count", "coordinates", "text", "retweeted"])
+ at [Source: (String)"{"errors":[{"code":187,"message":"Status is a duplicate."}]}"; line: 1, column: 12] (through reference chain: ca.jrvs.apps.twitter.dto.Tweet["errors"])
+	at ca.jrvs.apps.twitter.TwitterRestDaoTest.create(TwitterRestDaoTest.java:51)
+Caused by: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: 
+Unrecognized field "errors" (class ca.jrvs.apps.twitter.dto.Tweet), not marked as ignorable (10 known properties: "entities", "favorited", "created_at", "id", "favorite_count", "id_str", "retweet_count", "coordinates", "text", "retweeted"])
+ at [Source: (String)"{"errors":[{"code":187,"message":"Status is a duplicate."}]}"; line: 1, column: 12] (through reference chain: ca.jrvs.apps.twitter.dto.Tweet["errors"])
+	at ca.jrvs.apps.twitter.TwitterRestDaoTest.create(TwitterRestDaoTest.java:51)
+
+findById(ca.jrvs.apps.twitter.TwitterRestDaoTest)  Time elapsed: 0.263 s  <<< ERROR!
+java.lang.RuntimeException: 
+com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "truncated" (class ca.jrvs.apps.twitter.dto.Tweet), not marked as ignorable (10 known properties: "entities", "favorited", "created_at", "id", "favorite_count", "id_str", "retweet_count", "coordinates", "text", "retweeted"])
+ at [Source: (String)"{"created_at":"Mon Jul 22 11:51:33 +0000 2019","id":1153271358605996034,"id_str":"1153271358605996034","text":"ThisisTest","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[]},"source":"\u003ca href=\"https:\/\/www.jrvs.ca\" rel=\"nofollow\"\u003eSM JRVS Java API\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":1144303609770848256,"i"[truncated 1569 chars]; line: 1, column: 141] (through reference chain: ca.jrvs.apps.twitter.dto.Tweet["truncated"])
+	at ca.jrvs.apps.twitter.TwitterRestDaoTest.findById(TwitterRestDaoTest.java:31)
+Caused by: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: 
+Unrecognized field "truncated" (class ca.jrvs.apps.twitter.dto.Tweet), not marked as ignorable (10 known properties: "entities", "favorited", "created_at", "id", "favorite_count", "id_str", "retweet_count", "coordinates", "text", "retweeted"])
+ at [Source: (String)"{"created_at":"Mon Jul 22 11:51:33 +0000 2019","id":1153271358605996034,"id_str":"1153271358605996034","text":"ThisisTest","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[]},"source":"\u003ca href=\"https:\/\/www.jrvs.ca\" rel=\"nofollow\"\u003eSM JRVS Java API\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":1144303609770848256,"i"[truncated 1569 chars]; line: 1, column: 141] (through reference chain: ca.jrvs.apps.twitter.dto.Tweet["truncated"])
+	at ca.jrvs.apps.twitter.TwitterRestDaoTest.findById(TwitterRestDaoTest.java:31)
+
