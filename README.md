@@ -136,4 +136,4 @@ Example:   ```JavaGrepImp .*data.* home/centos/dev /tmp/grep.out```
 
 ### Enhancements and Issues:
 
-
+Need to create the argument prompt that ask user to input user argument and automatically open the output file for you.
