@@ -1,3 +1,4 @@
+
 package ca.jrvs.apps.twitter.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -17,7 +18,6 @@ public class Coordinates {
     private List<Double> coordinates = null;
     @JsonProperty("type")
     private String type;
-
 
     @JsonProperty("coordinates")
     public List<Double> getCoordinates() {
@@ -39,6 +39,11 @@ public class Coordinates {
         this.type = type;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Coordinates{" +
+                "coordinates=" + coordinates +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

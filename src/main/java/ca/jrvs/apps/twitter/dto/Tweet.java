@@ -1,9 +1,10 @@
-
 package ca.jrvs.apps.twitter.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.math.BigInteger;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -23,7 +24,7 @@ public class Tweet {
     @JsonProperty("created_at")
     private String createdAt;
     @JsonProperty("id")
-    private Long id;
+    private BigInteger id;
     @JsonProperty("id_str")
     private String idStr;
     @JsonProperty("text")
@@ -41,7 +42,6 @@ public class Tweet {
     @JsonProperty("retweeted")
     private Boolean retweeted;
 
-
     @JsonProperty("created_at")
     public String getCreatedAt() {
         return createdAt;
@@ -53,12 +53,12 @@ public class Tweet {
     }
 
     @JsonProperty("id")
-    public Long getId() {
+    public BigInteger getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Long id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 
@@ -142,5 +142,19 @@ public class Tweet {
         this.retweeted = retweeted;
     }
 
-
+    @Override
+    public String toString() {
+        return "Tweet{" +
+                "createdAt='" + createdAt + '\'' +
+                ", id=" + id +
+                ", idStr='" + idStr + '\'' +
+                ", text='" + text + '\'' +
+                ", entities=" + entities +
+                ", coordinates=" + coordinates +
+                ", retweetCount=" + retweetCount +
+                ", favoriteCount=" + favoriteCount +
+                ", favorited=" + favorited +
+                ", retweeted=" + retweeted +
+                '}';
+    }
 }

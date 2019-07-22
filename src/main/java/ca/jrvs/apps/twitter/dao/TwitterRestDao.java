@@ -3,6 +3,7 @@ package ca.jrvs.apps.twitter.dao;
 import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
 import ca.jrvs.apps.twitter.dto.Tweet;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
@@ -79,7 +80,12 @@ public class TwitterRestDao implements CrdRepo<Tweet, String> {
         }
 
         // Re-serialize response to Tweet object back
-        Tweet twtObj = toObjectFromJson(resultStr, Tweet.class);
+        Tweet twtObj = null;
+        try {
+            twtObj = toObjectFromJson(resultStr, Tweet.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return twtObj;
 
 
@@ -99,15 +105,30 @@ public class TwitterRestDao implements CrdRepo<Tweet, String> {
         String resultStr = null;
         try {
             resultStr = EntityUtils.toString(httpHelp.httpGet(uri).getEntity());
+            System.out.println(resultStr);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Tweet twtObj = toObjectFromJson(resultStr, Tweet.class);
+        Tweet twtObj = null;
+        try {
+            twtObj = toObjectFromJson(resultStr, Tweet.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Tweet twt=new Tweet();
         return twtObj;
     }
+    public <T> T toObjectFromJson(String json,
+                                         Class clazz) throws IOException {
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        return (T) mapper.readValue(json, clazz);
 
 
+    }
+/*
     public Tweet toObjectFromJson(String json, Class clazz) {
         ObjectMapper objmapToOBJ = new ObjectMapper(); // created a new object
         try {
@@ -120,7 +141,7 @@ public class TwitterRestDao implements CrdRepo<Tweet, String> {
             throw new RuntimeException(err404);
         }
     }
-
+*/
 }
 
 

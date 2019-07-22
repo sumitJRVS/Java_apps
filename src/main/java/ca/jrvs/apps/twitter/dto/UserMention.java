@@ -1,9 +1,10 @@
 package ca.jrvs.apps.twitter.dto;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -25,7 +26,6 @@ public class UserMention {
     private Integer id;
     @JsonProperty("id_str")
     private String idStr;
-
 
     @JsonProperty("name")
     public String getName() {
@@ -76,7 +76,5 @@ public class UserMention {
     public void setIdStr(String idStr) {
         this.idStr = idStr;
     }
-
-
 
 }
