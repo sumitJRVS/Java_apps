@@ -116,7 +116,7 @@ public class TwitterRestDao implements CrdRepo<Tweet, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // Tweet twt=new Tweet();
+
         return twtObj;
     }
     public <T> T toObjectFromJson(String json,

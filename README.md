@@ -35,6 +35,8 @@ show has fields for the tweet objects, which can be: `id`, `idStr`, `text`, `ent
 
 ### Design and structure:
 
+![twitter.jpg](https://github.com/sumitJRVS/Java_apps/blob/master/diagram/twitter.jpg)
+
 The program is split into main 5 major layers-components as show in the diagram above. The runner interface, service layer, DAO layer, HTTP client, Storage layer. Each of the component has its own function. E.g. of user arguments flow in case of post tweet:
 
 ```user args `>>` runner interface `>>` service layer `>>` REST DAO layer `>>` HTTP client(Helper function) `>>` storage layer(Twitter.com)```
