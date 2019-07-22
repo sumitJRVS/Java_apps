@@ -90,7 +90,7 @@ Delete by ID
 ## Design and structure:
 
 
-![a](https://github.com/sumitJRVS/Java_apps/blob/master/diagram/jdbc.jpgdiagram/jdbc.jpg)
+![a](https://github.com/sumitJRVS/Java_apps/blob/master/diagram/jdbc.jpg)
 
 As defined in introduction the application is build with following 3 major layers.
 
