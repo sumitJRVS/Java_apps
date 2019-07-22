@@ -87,7 +87,9 @@ Find by ID
 Delete by ID
 ```JDBCExecutor delete "ID"```
 
-### Design and structure:
+## Design and structure:
+
+![caption](https://github.com/sumitJRVS/Java_apps/tree/master/diagram/jdbc.jpg)
 
 As defined in introduction the application is build with following 3 major layers.
 
@@ -132,7 +134,5 @@ Example:   ```JavaGrepImp .*data.* home/centos/dev /tmp/grep.out```
 - Used File Reader, Buffer Reader, Buffer Writer classes.
 
 ### Enhancements and Issues:
-
-![caption](https://github.com/sumitJRVS/linux-usage-agent/blob/master/Diagram.jpg)
 
 
