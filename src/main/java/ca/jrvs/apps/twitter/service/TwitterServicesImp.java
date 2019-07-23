@@ -3,6 +3,8 @@ package ca.jrvs.apps.twitter.service;
 import ca.jrvs.apps.twitter.dao.CrdRepo;
 import ca.jrvs.apps.twitter.dto.Coordinates;
 import ca.jrvs.apps.twitter.dto.Tweet;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -11,15 +13,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class TwitterServicesImp implements TwitterServices {
 
     CrdRepo<Tweet, String> dao;
 
     // Constructor
+    @Autowired
     public TwitterServicesImp(CrdRepo dao) {
         this.dao = dao;
     }
 
+    @Override
     public void postTweet(String text, Double latitude, Double longitude) {
         // Create a coordinate object
         Coordinates coordinates = new Coordinates( );
@@ -45,6 +50,7 @@ public class TwitterServicesImp implements TwitterServices {
         }
     }
 
+    @Override
     public void showTweet(String id, String[] fields)  {
         Tweet tweet ;
         tweet= dao.findById(id);
@@ -87,6 +93,7 @@ public class TwitterServicesImp implements TwitterServices {
         }
     }
 
+    @Override
     public void deleteTweet(String[] id) {
         Tweet tweet;
 

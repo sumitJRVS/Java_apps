@@ -11,11 +11,12 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URI;
 
-
+@Component
 public class ApacheHttpHelper implements  HttpHelper {
 
     OAuthConsumer authConsum;
@@ -51,6 +52,7 @@ public class ApacheHttpHelper implements  HttpHelper {
 
 
     //POST request from HttpResponse class if no tweet exist
+    @Override
     public HttpResponse httpPost(URI urii) {
         HttpPost url = new HttpPost(urii);
         HttpResponse ansPOST = htpReq(url);
@@ -58,6 +60,7 @@ public class ApacheHttpHelper implements  HttpHelper {
     }
 
     //GET request from HttpResponse class
+    @Override
     public HttpResponse httpGet(URI uri) {
         HttpGet url = new HttpGet(uri);
         HttpResponse ansGet = htpReq(url);
@@ -65,8 +68,9 @@ public class ApacheHttpHelper implements  HttpHelper {
     }
 
     //POST request from Httpresponse class if the tweet exist
-    public  HttpResponse httpPost(URI urii, StringEntity strEnty){
-        HttpPost url = new HttpPost(urii);
+    @Override
+    public  HttpResponse httpPost(URI uri, StringEntity strEnty){
+        HttpPost url = new HttpPost(uri);
         HttpResponse ansPOST = htpReq(url);
         ansPOST.setEntity(strEnty); //this is extra step to set the string entitiy to the post
         return ansPOST;

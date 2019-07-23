@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.net.URI;
@@ -16,6 +18,7 @@ import java.util.List;
 
 // Data Access Object which handles tweet object
 // (Dao depends on HttpHelper)
+@Repository
 public class TwitterRestDao implements CrdRepo<Tweet, String> {
 
     //Construct URI
@@ -24,14 +27,15 @@ public class TwitterRestDao implements CrdRepo<Tweet, String> {
     private static final String SHOW_URI = "/1.1/statuses/show.json";
     private static final String DELETE_URI = "/1.1/statuses/destroy.json";
 
-    //constuctor
     private HttpHelper httpHelp;
 
+    //constuctor
+    @Autowired
     public TwitterRestDao(HttpHelper htpHlp) {
         this.httpHelp = htpHlp;
     }
 
-
+    @Override
     public Tweet create(Tweet twt) {
         //construct URI
         Tweet twtObj = new Tweet();
@@ -59,7 +63,7 @@ public class TwitterRestDao implements CrdRepo<Tweet, String> {
 
     }
 
-
+    @Override
     public Tweet deleteById(String id) {
         //construct URI
         URI uri = null;
@@ -91,7 +95,7 @@ public class TwitterRestDao implements CrdRepo<Tweet, String> {
 
     }
 
-
+    @Override
     public Tweet findById(String id) {
         //construct URI
         URI uri = null;
@@ -119,8 +123,8 @@ public class TwitterRestDao implements CrdRepo<Tweet, String> {
 
         return twtObj;
     }
-    public <T> T toObjectFromJson(String json,
-                                         Class clazz) throws IOException {
+
+    public <T> T toObjectFromJson(String json,  Class clazz) throws IOException {
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

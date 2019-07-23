@@ -1,12 +1,16 @@
 package ca.jrvs.apps.twitter;
 
 import ca.jrvs.apps.twitter.service.TwitterServices;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TwitterCLIRunner {
 
     private TwitterServices servicesTransferred;
 
     //Constructor
+    @Autowired
     public TwitterCLIRunner(TwitterServices services) {
         this.servicesTransferred = services;
     }
