@@ -67,8 +67,8 @@ We are not dealing with the Twitter storage directly in this app, for that we ar
 
 ### Enhancements and Issues:
 
-1) This app for user is in CLI implementation with some basic functionality and methods inside. For the update, the app will be having additional features like search by the coordinates, search by the time of posting, including external library to check the offensive, or company internal words word check into the service layer.
-2) Need to add more feature to Tweet just like the coordinates, posting images and 
+1) This app has CLI implementation with some basic functionality and methods inside. For the update, the app will be having additional features like search by the coordinates, search by the time of posting, including external library to check the offensive, or company internal words word check into the service layer.
+2) Need to add more feature that can handle images with the tweet as well. 
 
 -------
 
@@ -146,7 +146,8 @@ Example:   ```JavaGrepImp .*data.* home/centos/dev /tmp/grep.out```
 ### Enhancements and Issues:
 
 1) Need to create the argument prompt that ask user to input user argument and automatically open the output file for you.
-2) 
+2) Need to enhance the output results. Display all output result in a better formatted view.
+
 
 
 -------
