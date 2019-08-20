@@ -9,7 +9,7 @@ This app demonstrates the link between Database and Java application on how to u
 
 3) **Grep App :**
 This app is basically for searching required string line into the files and directory recursively using regex and extract the matching text output into a file.
-
+-------
 # Java-Twitter CLI app
 
 ### Introduction
@@ -67,12 +67,15 @@ We are not dealing with the Twitter storage directly in this app, for that we ar
 
 ### Enhancements and Issues:
 
-This app for user is in CLI implementation with some basic functionality and methods inside. For the update, the app will be having additional features like search by the coordinates, search by the time of posting, including external library to check the offensive, or company internal words word check into the service layer.
+1) This app for user is in CLI implementation with some basic functionality and methods inside. For the update, the app will be having additional features like search by the coordinates, search by the time of posting, including external library to check the offensive, or company internal words word check into the service layer.
+2) Need to add more feature to Tweet just like the coordinates, posting images and 
 
-## Java-JDBC app
+-------
+
+# Java-JDBC app
 
 ### Introduction: 
-This app is built to demonstrate the JDBC flow among `PostgreSQL`, `JDBC driver`, `connection manager`, `JDBC API`, `Java app1. The application is designed for specific database given: hplussport.
+This app is built to demonstrate the JDBC flow among `PostgreSQL`, `JDBC driver`, `connection manager`, `JDBC API`, `Java-JDBC-app`. The application is designed for specific database given: hplussport.
 
 The app is based on 4 layers: Java application runner(main method), DAO, DTO, storage PostgreSQL layers. DTO (data transfer object) DAO (data access object).
 
@@ -112,9 +115,11 @@ JDBCjavaExe.java has the main method handles user input/output at endpoint. This
 
 ### Enhancements and Issues:
 
-Added PostgreSQL command and basic statements: to run with docker, how to execute sql tables into database etc refer to README.md in jdbc_sql/README.md
+1) Added PostgreSQL command and basic statements: to run with docker, how to execute sql tables into database etc refer to README.md in jdbc_sql/README.md
+2) Added Mockito test for the TwitterServiceImp class which is implemented from interface CrudRepo.
 
-## Java-Grep app
+-------
+# Java-Grep app
 
 ### Introduction: 
 This app searches recursively for the given string using RegEx pattern into the folders, files to a matched patter and output the string into a file.
@@ -124,9 +129,11 @@ This app searches recursively for the given string using RegEx pattern into the 
 ```USAGE: regex rootPath outFile```  is very similar to Linux command 
 ``` egrep -r {regex} {rootPath} > {outFile}```
 
-**regex**- a special text string for describing a search pattern
-**rootPath**- root directory path
-**outFile** - output ?le name
+> **regex**- a special text string for describing a search pattern
+
+> **rootPath**- root directory path
+
+> **outFile** - output file name
 
 Example:   ```JavaGrepImp .*data.* home/centos/dev /tmp/grep.out```
 
@@ -138,4 +145,8 @@ Example:   ```JavaGrepImp .*data.* home/centos/dev /tmp/grep.out```
 
 ### Enhancements and Issues:
 
-Need to create the argument prompt that ask user to input user argument and automatically open the output file for you.
+1) Need to create the argument prompt that ask user to input user argument and automatically open the output file for you.
+2) 
+
+
+-------
