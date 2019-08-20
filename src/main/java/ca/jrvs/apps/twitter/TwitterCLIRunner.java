@@ -19,7 +19,7 @@ public class TwitterCLIRunner {
 
         if (runArgs.length <= 1) {
 
-            System.out.println("You need to enter atleast 2 args: POST/SHOW/GET/DELETE TWEET");
+            System.out.println("You need to enter atleast 2 args: POST|SHOW|GET|DELETE TWEET");
         }
 
         switch (runArgs[0].toLowerCase()) {
@@ -86,7 +86,6 @@ public class TwitterCLIRunner {
 
         servicesTransferred.deleteTweet(idss);
     }
-
 
 }
 

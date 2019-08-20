@@ -17,34 +17,30 @@ import org.springframework.context.annotation.Configuration;
 public class BeansTwitterCLIApp {
 
 
+    public static void main(String[] args) {
+        ApplicationContext springAppCon = new AnnotationConfigApplicationContext(BeansTwitterCLIApp.class);
+        TwitterCLIRunner clrun = springAppCon.getBean(TwitterCLIRunner.class);
+        clrun.runner(args);
+
+    }
+
     @Bean
-    public HttpHelper httpHelper(){
+    public HttpHelper httpHelper() {
         return new ApacheHttpHelper();
     }
 
-
     @Bean
-    public CrdRepo crdDao(HttpHelper htHlp){
+    public CrdRepo crdDao(HttpHelper htHlp) {
         return new TwitterRestDao(htHlp);
     }
 
-
     @Bean
-    public TwitterServices twtsrv(TwitterRestDao twDAO){
+    public TwitterServices twtsrv(TwitterRestDao twDAO) {
         return new TwitterServicesImp(twDAO);
     }
 
     @Bean
-    public TwitterCLIRunner cliRun(TwitterServices twsrv){
+    public TwitterCLIRunner cliRun(TwitterServices twsrv) {
         return new TwitterCLIRunner(twsrv);
     }
-
-
-
-    public static void main(String[] args) {
-        ApplicationContext springAppCon = new AnnotationConfigApplicationContext(BeansTwitterCLIApp.class);
-            TwitterCLIRunner clrun = springAppCon.getBean(TwitterCLIRunner.class);
-            clrun.runner(args);
-
-        }
 }

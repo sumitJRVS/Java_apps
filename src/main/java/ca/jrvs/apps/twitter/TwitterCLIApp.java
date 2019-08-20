@@ -12,13 +12,18 @@ public class TwitterCLIApp {
 
     public static void main(String[] args) {
 
-        HttpHelper  htpHelp = new ApacheHttpHelper();
+        HttpHelper htpHelp = new ApacheHttpHelper();
         CrdRepo dao = new TwitterRestDao(htpHelp);
         TwitterServices twServi = new TwitterServicesImp(dao);
         TwitterCLIRunner run = new TwitterCLIRunner(twServi);
         run.runner(args);
 
     }
+
+    /**
+     * postTweet example in argument of IntelliJ :
+     * POST This%20is%20Antarctica!%20OMG...! 90.7,-89.0
+     */
 }
 
 

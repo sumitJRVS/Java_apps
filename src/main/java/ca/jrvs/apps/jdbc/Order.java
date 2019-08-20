@@ -58,6 +58,10 @@ public class Order implements DataTransferObject {
         return 0;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getCust_first_name() {
         return cust_first_name;
     }
@@ -184,9 +188,5 @@ public class Order implements DataTransferObject {
 
     public void setProd_price(Integer prod_price) {
         this.prod_price = prod_price;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 }

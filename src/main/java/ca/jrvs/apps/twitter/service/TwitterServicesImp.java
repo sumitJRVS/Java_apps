@@ -13,6 +13,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * All the business Logic applies here. 1) postTweet 2) showTweet 3) deleteTweet
+ * Make sure to have better structure we can always make a class to Interface and we can always implements.
+ */
 @Component
 public class TwitterServicesImp implements TwitterServices {
 
@@ -27,11 +31,12 @@ public class TwitterServicesImp implements TwitterServices {
     @Override
     public void postTweet(String text, Double latitude, Double longitude) {
         // Create a coordinate object
-        Coordinates coordinates = new Coordinates( );
+        Coordinates coordinates = new Coordinates();
         // Create a List<> which can hold Latitude, Longitude Coordinates in single ArrayList.
-        List<Double> coords = new ArrayList< >( );
+        List<Double> coords = new ArrayList<>();
         // Coordinates setup, fill args[] data and set type
-        coords.add(latitude);  coords.add(longitude);
+        coords.add(latitude);
+        coords.add(longitude);
         coordinates.setCoordinates(coords);
         coordinates.setType("Point");
 
@@ -44,36 +49,35 @@ public class TwitterServicesImp implements TwitterServices {
         twtobj = dao.create(twtobj);
         if (twtobj.getId() != null) {
             System.out.println("You just POST the tweet : " + twtobj.getText());
-        }
-        else {
+        } else {
             System.out.println("Error in Posting");
         }
     }
 
     @Override
-    public void showTweet(String id, String[] fields)  {
-        Tweet tweet ;
-        tweet= dao.findById(id);
+    public void showTweet(String id, String[] fields) {
+        Tweet tweet;
+        tweet = dao.findById(id);
 
         if (tweet.getText() == null) {
             System.out.println("Tweet ID does not exists.");
         } else {
 
-        Class tweetClass;
-        tweetClass= tweet.getClass();
+            Class tweetClass;
+            tweetClass = tweet.getClass();
 
-        Method[] methods;
-        methods = tweetClass.getMethods();
+            Method[] methods;
+            methods = tweetClass.getMethods();
 
-        List<Method> methodList = Arrays.stream(methods)
-                .filter(metho -> metho.getName().startsWith("get"))
-                .collect(Collectors.toList());
+            List<Method> methodList = Arrays.stream(methods)
+                    .filter(metho -> metho.getName().startsWith("get"))
+                    .collect(Collectors.toList());
 
-        List<String> methodNames = methodList.stream()
-                .map(met-> met.getName().substring(3).toLowerCase())
-                .collect(Collectors.toList());
+            List<String> methodNames = methodList.stream()
+                    .map(met -> met.getName().substring(3).toLowerCase())
+                    .collect(Collectors.toList());
 
-        int i;
+            int i;
             for (String s : fields) {
                 s = s.toLowerCase();
                 System.out.print("\t" + s + ":");
@@ -87,8 +91,7 @@ public class TwitterServicesImp implements TwitterServices {
                     } catch (InvocationTargetException e) {
                         e.printStackTrace();
                     }
-                }
-                else System.out.println("No such field exist in the Tweet List<>");
+                } else System.out.println("No such field exist in the Tweet List<>");
             }
         }
     }
@@ -97,15 +100,15 @@ public class TwitterServicesImp implements TwitterServices {
     public void deleteTweet(String[] id) {
         Tweet tweet;
 
-        if (id.length == 0) { System.out.println("Tweet ID does not exists."); }
-
-        else {
+        if (id.length == 0) {
+            System.out.println("Tweet ID does not exists.");
+        } else {
             for (String ids : id) {
                 tweet = dao.deleteById(ids);
                 if (tweet.getText() == null) {
-                    System.out.println("Tweet unavailable");
+                    System.out.println("Tweet is unavailable");
                 } else {
-                    System.out.println("Delete successful of tweet with message: " + tweet.getText());
+                    System.out.println("Your Tweet has been deleted. Tweet: " + tweet.getText());
                 }
             }
 

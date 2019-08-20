@@ -1,11 +1,5 @@
 package ca.jrvs.apps.jdbc;
 
-import ca.jrvs.apps.twitter.dto.Coordinates;
-import sun.util.resources.cldr.to.CurrencyNames_to;
-
-import java.sql.*;
-
-
 /**
  * This JDBCjavaExecutor class has main method that can perform functions like:
  * 1) Established JDBC connection manager
@@ -21,24 +15,24 @@ public class JDBCjavaExe_deprecatedV0 {
 
         DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "hplussport", "postgres", "password");
 
-            /**
-             *  Connection connect = dcm.getConnect();
-             */
+        /**
+         *  Connection connect = dcm.getConnect();
+         */
 
 
-            /** Statement-object is created to build some query.
-             * Statement stm = connect.createStatement();
-             * /
+        /** Statement-object is created to build some query.
+         * Statement stm = connect.createStatement();
+         * /
 
-            /** Resultset-object is created and stored the output of query.
-             *  Resultset is multidimensional array that returns a db statement. Iterating on Resultset is possible e.g. while (resultSet.next());
-             *  ResultSet rset = stm.executeQuery("SELECT COUNT (*) FROM CUSTOMER");
-             *
-             * while (rset.next()) {
-             *   System.out.println(rset.getInt(1));
-             *   }
-             *
-             */
+         /** Resultset-object is created and stored the output of query.
+         *  Resultset is multidimensional array that returns a db statement. Iterating on Resultset is possible e.g. while (resultSet.next());
+         *  ResultSet rset = stm.executeQuery("SELECT COUNT (*) FROM CUSTOMER");
+         *
+         * while (rset.next()) {
+         *   System.out.println(rset.getInt(1));
+         *   }
+         *
+         */
             /*
             This works for insert statement main method
             Connection connect = dcm.getConnect();
@@ -59,38 +53,38 @@ public class JDBCjavaExe_deprecatedV0 {
             cust_obj_instnc.setZipcode("M5A1A1");
             System.out.println("Added 1 record into Customer table...");
             */
-            /**
-             * This is findbyID method main run
-             * Connection con = dcm.getConnect();
-             * CustomerDAO custoDAO = new CustomerDAO(con);
-             * Customer cust = custoDAO.findByID(10018 );
-             * System.out.println(cust.getFirst_name());
-             *
-             */
+        /**
+         * This is findbyID method main run
+         * Connection con = dcm.getConnect();
+         * CustomerDAO custoDAO = new CustomerDAO(con);
+         * Customer cust = custoDAO.findByID(10018 );
+         * System.out.println(cust.getFirst_name());
+         *
+         */
 
-            /**
-             * This is Update method's main run
-             *
-             * Connection con = dcm.getConnect();
-             * CustomerDAO cDao = new CustomerDAO(con);
-             * Customer customer = cDao.findByID(10001);
-             * System.out.println(customer.getFirst_name()+ customer.getLast_name());
-             *
-             * customer.setFirst_name("GgGIZI");
-             * customer.setLast_name("Zhnanag");
-             *
-             * customer = cDao.update(customer);
-             * System.out.println(customer.getFirst_name() + customer.getLast_name());
-             */
+        /**
+         * This is Update method's main run
+         *
+         * Connection con = dcm.getConnect();
+         * CustomerDAO cDao = new CustomerDAO(con);
+         * Customer customer = cDao.findByID(10001);
+         * System.out.println(customer.getFirst_name()+ customer.getLast_name());
+         *
+         * customer.setFirst_name("GgGIZI");
+         * customer.setLast_name("Zhnanag");
+         *
+         * customer = cDao.update(customer);
+         * System.out.println(customer.getFirst_name() + customer.getLast_name());
+         */
 
-            /**
-             * This is DELETE method in the main run
-             *
-             * Connection cm = dcm.getConnect();
-             * CustomerDAO cusDAO = new CustomerDAO(cm);
-             * Customer cust = new Customer();
-             * cusDAO.delete(1000);
-             */
+        /**
+         * This is DELETE method in the main run
+         *
+         * Connection cm = dcm.getConnect();
+         * CustomerDAO cusDAO = new CustomerDAO(cm);
+         * Customer cust = new Customer();
+         * cusDAO.delete(1000);
+         */
 
 
     }

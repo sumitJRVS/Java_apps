@@ -1,4 +1,5 @@
 package ca.jrvs.apps.twitter.dao.helper;
+
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
 import oauth.signpost.exception.OAuthCommunicationException;
@@ -17,14 +18,13 @@ import java.io.IOException;
 import java.net.URI;
 
 @Component
-public class ApacheHttpHelper implements  HttpHelper {
+public class ApacheHttpHelper implements HttpHelper {
 
-    OAuthConsumer authConsum;
     private static String CONSUMER_KEY = System.getenv("consumerkey");
     private static String CONSUMER_SECRET = System.getenv("consumersecret");
     private static String ACCESS_TOKEN = System.getenv("accesstoken");
     private static String TOKEN_SECRET = System.getenv("tokensecret");
-
+    OAuthConsumer authConsum;
     HttpClient htpCli = new DefaultHttpClient();
 
     //constructor and setup OAuth bind
@@ -35,18 +35,26 @@ public class ApacheHttpHelper implements  HttpHelper {
 
     // By  default this will execute
     public HttpResponse htpReq(HttpUriRequest url) {
-        try {authConsum.sign(url);}   //sing Authentication request
-        catch (OAuthMessageSignerException e1) {e1.printStackTrace();}
-        catch (OAuthCommunicationException e2) {e2.printStackTrace();}
-        catch (OAuthExpectationFailedException e3) {e3.printStackTrace();}
+        try {
+            authConsum.sign(url);
+        }   //sing Authentication request
+        catch (OAuthMessageSignerException e1) {
+            e1.printStackTrace();
+        } catch (OAuthCommunicationException e2) {
+            e2.printStackTrace();
+        } catch (OAuthExpectationFailedException e3) {
+            e3.printStackTrace();
+        }
 
 
+        try {
+            HttpResponse htpReq = htpCli.execute(url);
+            return htpReq;
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
 
-        try {HttpResponse htpReq = htpCli.execute(url);
-            return htpReq; }
-        catch ( IOException e1) { e1.printStackTrace();}
-
-        return  null;
+        return null;
 
     }
 
@@ -69,13 +77,12 @@ public class ApacheHttpHelper implements  HttpHelper {
 
     //POST request from Httpresponse class if the tweet exist
     @Override
-    public  HttpResponse httpPost(URI uri, StringEntity strEnty){
+    public HttpResponse httpPost(URI uri, StringEntity strEnty) {
         HttpPost url = new HttpPost(uri);
         HttpResponse ansPOST = htpReq(url);
         ansPOST.setEntity(strEnty); //this is extra step to set the string entitiy to the post
         return ansPOST;
     }
-
 
 
 }

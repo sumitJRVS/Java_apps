@@ -3,61 +3,11 @@ package ca.jrvs.apps.twitter.example;
 import ca.jrvs.apps.twitter.example.dto.Company;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 
 //jackson lib-API imported helps us to converted back and forth java obj<-> JSON string.
 public class JSONandOBJparser {
-
-
-    /**
-     * Convert Java OBJ --> JSON string (concept = writeValue() = serialization)
-     *
-     * @param object input object      @return JSON String       @throws JsonProcessingException
-     */
-    public static String toJson(Object object, boolean prettyJson, boolean includeNullValues) {
-
-        ObjectMapper objmapToJson = new ObjectMapper(); // created a new object name= objmap
-
-        try {
-            String jsonStr = new String(); //created new string
-            jsonStr = objmapToJson.writeValueAsString(object); // object converted to string using util function...
-            return (jsonStr);  //string can be printed easily using sout!
-
-        } catch (JsonProcessingException err404) {
-            err404.printStackTrace();
-            throw new RuntimeException(err404);
-        }
-    }
-
-
-    /**
-     * JSON string -->  Java OBJ  ((Parse JSON string to a object)) (concept = readval() = DeSerialization)
-     *
-     * @param json  JSON str
-     * @param clazz object class
-     * @param <T>   Type
-     * @return Object
-     * @throws IOException
-     */
-    public static <T> T toObjectFromJson(String json, Class clazz) {
-        ObjectMapper objmapToOBJ = new ObjectMapper(); // created a new object name= objmap
-
-        try {
-
-            return (T) objmapToOBJ.readValue(json, clazz);  // T is imp otherwise class is object and string alll mixed up
-
-        } catch (JsonProcessingException err404) {
-            err404.printStackTrace();
-            throw new RuntimeException(err404);
-        } catch (IOException err404) {
-            err404.printStackTrace();
-            throw new RuntimeException(err404);
-        }
-
-    }
-
-
-
 
 
     //copy pasted above from  Edward file
@@ -106,15 +56,58 @@ public class JSONandOBJparser {
             + "   ]\n"
             + "}";
 
+    /**
+     * Convert Java OBJ --> JSON string (concept = writeValue() = serialization)
+     *
+     * @param object input object      @return JSON String       @throws JsonProcessingException
+     */
+    public static String toJson(Object object, boolean prettyJson, boolean includeNullValues) {
 
+        ObjectMapper objmapToJson = new ObjectMapper(); // created a new object name= objmap
 
+        try {
+            String jsonStr = new String(); //created new string
+            jsonStr = objmapToJson.writeValueAsString(object); // object converted to string using util function...
+            return (jsonStr);  //string can be printed easily using sout!
+
+        } catch (JsonProcessingException err404) {
+            err404.printStackTrace();
+            throw new RuntimeException(err404);
+        }
+    }
+
+    /**
+     * JSON string -->  Java OBJ  ((Parse JSON string to a object)) (concept = readval() = DeSerialization)
+     *
+     * @param json  JSON str
+     * @param clazz object class
+     * @param <T>   Type
+     * @return Object
+     * @throws IOException
+     */
+    public static <T> T toObjectFromJson(String json, Class clazz) {
+        ObjectMapper objmapToOBJ = new ObjectMapper(); // created a new object name= objmap
+
+        try {
+
+            return (T) objmapToOBJ.readValue(json, clazz);  // T is imp otherwise class is object and string alll mixed up
+
+        } catch (JsonProcessingException err404) {
+            err404.printStackTrace();
+            throw new RuntimeException(err404);
+        } catch (IOException err404) {
+            err404.printStackTrace();
+            throw new RuntimeException(err404);
+        }
+
+    }
 
     //implemented toObj class and it works...
     //method to return output  into the JSON string and print JSON
     public static void main(String[] args) throws IOException {
 
-    //ObjectMapper obj1 = new ObjectMapper();
-    Company com = toObjectFromJson(demo1, Company.class);    // passing the demo1 =edward given string as copied on top coding line
+        //ObjectMapper obj1 = new ObjectMapper();
+        Company com = toObjectFromJson(demo1, Company.class);    // passing the demo1 =edward given string as copied on top coding line
         System.out.println(com.toString());
     }
 

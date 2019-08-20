@@ -1,13 +1,14 @@
 package ca.jrvs.apps.twitter;
 
 import ca.jrvs.apps.twitter.dao.TwitterRestDao;
+import ca.jrvs.apps.twitter.dao.helper.ApacheHttpHelper;
 import ca.jrvs.apps.twitter.dto.Coordinates;
 import ca.jrvs.apps.twitter.dto.Tweet;
-import ca.jrvs.apps.twitter.dao.helper.ApacheHttpHelper;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
 
 

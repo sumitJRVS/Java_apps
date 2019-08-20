@@ -9,21 +9,24 @@ import java.util.List;
 public interface GrepApp { // this is publicly available and has no class and no public needed as its already public interface
 
     /**
-     * 	Top level search workflow
-     * 	@throws IOException
+     * Top level search workflow
+     *
+     * @throws IOException
      */
     void workingFunction() throws IOException;
 
     /**
      * Traverse a given directory and return all files
+     *
      * @param rootFolder
      * @return Files in the folder
      */
     List<File> filesList(String rootFolder);
 
     /**
-     *param input File file to be read@return lines
+     * param input File file to be read@return lines
      * Read a file and return all the lines
+     *
      * @param extractedFiles
      * @return String lines from the obtained files.
      */
@@ -31,6 +34,7 @@ public interface GrepApp { // this is publicly available and has no class and no
 
     /**
      * Check if a line contains the regex pattern (passed by user)
+     *
      * @param outputLines
      * @return boolean function
      */
@@ -38,6 +42,7 @@ public interface GrepApp { // this is publicly available and has no class and no
 
     /**
      * Write lines to a file
+     *
      * @param extractedLines
      * @throws Exception
      * @retur we get extracted lines from search, recorded into the file.
@@ -50,24 +55,21 @@ public interface GrepApp { // this is publicly available and has no class and no
     String getRootPath();
 
     /**
-     *
      * @param rootPath
      */
     void setRootPath(String rootPath);
 
     /**
-     *
      * @return
      */
     String getRegex();
 
     /**
-     *@param regex
+     * @param regex
      */
     void setRegex(String regex);
 
     /**
-     *
      * @return
      */
     String getOutFile();

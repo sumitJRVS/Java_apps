@@ -2,11 +2,14 @@ package ca.jrvs.apps.jdbc;
 
 import ca.jrvs.apps.jdbc.util.DataAccessObject;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
-/** DataAccessObject interface  is extended by CutomerDAO class in here.
- *
+/**
+ * DataAccessObject interface  is extended by CutomerDAO class in here.
  */
 
 // DTO implements
@@ -18,7 +21,7 @@ public class CustomerDAO extends DataAccessObject<Customer> {
 
     private static final String INSERT = "Insert into customer (first_name,last_name, email,phone,address,city,state,zipcode) Values (?,?,?,?,?,?,?,?)";
 
-    private static final String FIND_ONE = "SELECT customer_id, first_name, last_name, email,"+
+    private static final String FIND_ONE = "SELECT customer_id, first_name, last_name, email," +
             "phone, address, city, state, zipcode FROM customer WHERE customer_id=?";
 
     private static final String UPDATE = "UPDATE customer SET first_name=?, last_name=?, email=?, phone=?, address=?, city=?, state=?, zipcode=? WHERE customer_id = ?";
@@ -97,10 +100,9 @@ public class CustomerDAO extends DataAccessObject<Customer> {
             PreparedStatement stat = cnt.prepareStatement(DELETE);
             stat.setLong(1, id);
             stat.execute();
-        }
-        catch(SQLException err){
+        } catch (SQLException err) {
             err.printStackTrace();
-            throw  new RuntimeException("failed to delete!" + err);
+            throw new RuntimeException("failed to delete!" + err);
         }
 
     }
@@ -113,14 +115,14 @@ public class CustomerDAO extends DataAccessObject<Customer> {
              */
             PreparedStatement stat = this.cnt
                     .prepareStatement(INSERT);
-            stat.setString  (1, dto.getFirst_name());
-            stat.setString  (2, dto.getLast_name());
-            stat.setString  (3, dto.getEmail());
-            stat.setString  (4, dto.getPhone());
-            stat.setString  (5, dto.getAddress());
-            stat.setString  (6, dto.getCity());
-            stat.setString  (7, dto.getState());
-            stat.setString  (8, dto.getZipcode());
+            stat.setString(1, dto.getFirst_name());
+            stat.setString(2, dto.getLast_name());
+            stat.setString(3, dto.getEmail());
+            stat.setString(4, dto.getPhone());
+            stat.setString(5, dto.getAddress());
+            stat.setString(6, dto.getCity());
+            stat.setString(7, dto.getState());
+            stat.setString(8, dto.getZipcode());
             stat.execute();
             int last_id = this.getLastValue(CUSTOMER_SEQUENCE);
             return this.findByID(last_id);

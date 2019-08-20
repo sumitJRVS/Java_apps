@@ -1,9 +1,11 @@
 package ca.jrvs.apps.jdbc;
+
 import ca.jrvs.apps.jdbc.util.DataTransferObject;
 
 // Customer class or Customer.java help implementing DTO interface
 public class Customer implements DataTransferObject {
 
+    final StringBuilder cust_str = new StringBuilder();
     private long customer_id;
     private String first_name;
     private String last_name;
@@ -13,7 +15,6 @@ public class Customer implements DataTransferObject {
     private String city;
     private String state;
     private String zipcode;
-
 
     // 1 compulsory by default implementation here;
     @Override
@@ -74,23 +75,21 @@ public class Customer implements DataTransferObject {
         this.city = ip_city;
     }
 
-    public String getState(){
+    public String getState() {
         return this.state;
     }
 
-    public void setState(String ip_state){
+    public void setState(String ip_state) {
         this.state = ip_state;
     }
 
-    public String getZipcode(){
+    public String getZipcode() {
         return zipcode;
     }
-    public void setZipcode(String ip_zipcode){
+
+    public void setZipcode(String ip_zipcode) {
         this.zipcode = ip_zipcode;
     }
-
-
-    final StringBuilder cust_str  = new StringBuilder();
 
     @Override
     public String toString() {

@@ -1,7 +1,4 @@
-
 package ca.jrvs.apps.jdbc;
-
-import sun.rmi.runtime.NewThreadAction;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -18,7 +15,6 @@ public class JDBCjavaExe {
         try {
             Connection connect = dcm.getConnect();
             CustomerDAO cusDAO = new CustomerDAO(connect);
-
 
 
             switch (args[0]) {
@@ -58,7 +54,7 @@ public class JDBCjavaExe {
 
                 case "order":
                     OrderDAO ordDAO = new OrderDAO(connect);
-                    System.out.println(ordDAO.findByID(Integer.valueOf(args [1]) ));
+                    System.out.println(ordDAO.findByID(Integer.valueOf(args[1])));
                     break;
 
 
@@ -71,8 +67,7 @@ public class JDBCjavaExe {
                     System.out.println("Usage: create|update|read|update|delete");
 
             }
-        }
-        catch   (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
 
         }

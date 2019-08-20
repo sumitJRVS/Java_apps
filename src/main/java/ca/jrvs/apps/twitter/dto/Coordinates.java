@@ -1,4 +1,3 @@
-
 package ca.jrvs.apps.twitter.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
